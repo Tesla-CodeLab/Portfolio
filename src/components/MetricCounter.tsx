@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(max, n));
@@ -20,6 +20,8 @@ export function MetricCounter({
   durationMs?: number;
 }) {
   const [display, setDisplay] = useState(0);
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLSpanElement | null>(null);
 
   const formatter = useMemo(() => {
     return new Intl.NumberFormat(undefined, {
@@ -29,6 +31,26 @@ export function MetricCounter({
   }, [decimals]);
 
   useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setStarted(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    obs.observe(node);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!started) return;
+
     let raf = 0;
     const start = performance.now();
 
@@ -41,10 +63,10 @@ export function MetricCounter({
 
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [durationMs, value]);
+  }, [durationMs, started, value]);
 
   return (
-    <span>
+    <span ref={ref}>
       {prefix}
       {formatter.format(display)}
       {suffix}

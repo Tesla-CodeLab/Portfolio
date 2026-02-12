@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 type Asset = {
@@ -131,10 +132,14 @@ export function LightningMediaOverlay() {
           }}
         >
           {active.asset.kind === "gif" ? (
-            <img
+            <Image
               alt=""
               aria-hidden="true"
-              className="h-full w-full object-cover"
+              fill
+              sizes="100vw"
+              priority={false}
+              unoptimized
+              className="object-cover"
               src={encodeURI(active.asset.src)}
             />
           ) : (

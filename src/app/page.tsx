@@ -343,62 +343,223 @@ export default function Home() {
 
       <section className="py-16 md:py-24">
         <SectionHeading
-          eyebrow="ANALYTICS"
-          title="Instrumentation that compounds performance."
-          description="Mock dashboards to represent the way we track growth loops: engagement, leads, and ROAS efficiency."
+          eyebrow="GROWTH INSTRUMENTATION SYSTEM"
+          title="Performance Is Engineered. Not Hoped For."
+          description="Every campaign is tracked as a closed performance loop — signal, optimization, scale."
+          right={
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/70">
+              <span className="status-dot h-2 w-2 rounded-full bg-[#00F5FF]" />
+              System Active
+            </div>
+          }
         />
 
-        <Stagger className="mt-10 grid gap-6 md:grid-cols-3">
-          <Item>
-            <GlowCard>
+        <div className="mt-10">
+          <div className="relative">
+            <div className="pointer-events-none absolute left-0 right-0 top-1/2 hidden -translate-y-1/2 md:block">
+              <div className="mx-auto h-px w-[92%] bg-[linear-gradient(90deg,transparent,rgba(0,245,255,0.55),rgba(0,163,255,0.45),transparent)] opacity-[0.45]" />
+              <div className="connector-current mx-auto mt-1 h-[2px] w-[92%] bg-[linear-gradient(90deg,transparent,rgba(0,245,255,0.65),transparent)] opacity-[0.10]" />
+            </div>
+
+            <Stagger className="grid gap-6 md:grid-cols-3">
+              <Item>
+                <GlowCard className="relative overflow-hidden">
+                  <div className="absolute inset-0 -z-10 opacity-[0.09] [background-image:linear-gradient(rgba(0,245,255,0.10)_1px,transparent_1px),linear-gradient(90deg,rgba(0,245,255,0.10)_1px,transparent_1px)] [background-size:60px_60px] signal-grid" />
+                  <div className="text-xs font-medium tracking-[0.22em] text-white/45">
+                    SIGNAL CAPTURE
+                  </div>
+                  <div className="mt-2 font-heading text-xl text-white">Signal Collection</div>
+                  <p className="mt-2 text-sm leading-7 text-white/60">
+                    We don’t just track metrics — we capture signals.
+                  </p>
+
+                  <div className="mt-5 grid gap-2 text-sm text-white/60">
+                    <div className="flex items-center justify-between">
+                      <span>Engagement velocity</span>
+                      <span className="h-2 w-2 rounded-full bg-[#00F5FF]/65" />
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span>Audience heat maps</span>
+                      <span className="h-2 w-2 rounded-full bg-[#00A3FF]/60" />
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span>Funnel entry rate</span>
+                      <span className="h-2 w-2 rounded-full bg-white/40" />
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span>Creative performance delta</span>
+                      <span className="h-2 w-2 rounded-full bg-[#00F5FF]/45" />
+                    </div>
+                  </div>
+                </GlowCard>
+              </Item>
+
+              <Item>
+                <GlowCard className="relative overflow-hidden">
+                  <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.55]">
+                    <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full border border-cyan-400/20 bg-[radial-gradient(circle_at_center,rgba(0,245,255,0.14),transparent_60%)] loop-rotate" />
+                    <div className="absolute -left-24 -bottom-24 h-64 w-64 rounded-full border border-cyan-400/15 bg-[radial-gradient(circle_at_center,rgba(0,163,255,0.12),transparent_62%)] loop-rotate" />
+                  </div>
+
+                  <div className="text-xs font-medium tracking-[0.22em] text-white/45">
+                    OPTIMIZATION ENGINE
+                  </div>
+                  <div className="mt-2 font-heading text-xl text-white">
+                    Optimization Engine
+                  </div>
+                  <p className="mt-2 text-sm leading-7 text-white/60">
+                    Data isn’t stored. It’s used.
+                  </p>
+
+                  <div className="mt-5 grid gap-2 text-sm text-white/60">
+                    <div className="flex items-center justify-between">
+                      <span>Creative testing cycles</span>
+                      <span className="h-2 w-2 rounded-full bg-[#00F5FF]/60" />
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span>Funnel refinement</span>
+                      <span className="h-2 w-2 rounded-full bg-[#00A3FF]/55" />
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span>Budget reallocation</span>
+                      <span className="h-2 w-2 rounded-full bg-white/40" />
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span>CAC reduction tracking</span>
+                      <span className="h-2 w-2 rounded-full bg-[#00F5FF]/45" />
+                    </div>
+                  </div>
+                </GlowCard>
+              </Item>
+
+              <Item>
+                <GlowCard className="relative overflow-hidden">
+                  <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(700px_circle_at_40%_18%,rgba(0,245,255,0.12),transparent_55%),radial-gradient(700px_circle_at_72%_60%,rgba(0,163,255,0.10),transparent_56%)]" />
+
+                  <div className="text-xs font-medium tracking-[0.22em] text-white/45">
+                    PERFORMANCE OUTPUT
+                  </div>
+                  <div className="mt-2 font-heading text-xl text-white">Performance Output</div>
+                  <p className="mt-2 text-sm leading-7 text-white/60">
+                    Numbers that are earned by a system.
+                  </p>
+
+                  <div className="mt-5 grid grid-cols-2 gap-4">
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                      <div className="font-heading text-2xl text-white">
+                        <MetricCounter value={120} prefix="+" suffix="%" />
+                      </div>
+                      <div className="mt-1 text-xs text-white/55">Engagement Lift</div>
+                      <div className="mt-2 h-px w-10 bg-[#00F5FF]/45" />
+                    </div>
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                      <div className="font-heading text-2xl text-white">
+                        <MetricCounter value={800} suffix="+" />
+                      </div>
+                      <div className="mt-1 text-xs text-white/55">Qualified Leads</div>
+                      <div className="mt-2 h-px w-10 bg-[#00A3FF]/45" />
+                    </div>
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                      <div className="font-heading text-2xl text-white">
+                        <MetricCounter value={3.2} suffix="x" decimals={1} />
+                      </div>
+                      <div className="mt-1 text-xs text-white/55">ROAS Efficiency</div>
+                      <div className="mt-2 h-px w-10 bg-[#00F5FF]/45" />
+                    </div>
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                      <div className="font-heading text-2xl text-white">
+                        <MetricCounter value={28} suffix="%" />
+                      </div>
+                      <div className="mt-1 text-xs text-white/55">Funnel Conversion</div>
+                      <div className="mt-2 h-px w-10 bg-[#00A3FF]/45" />
+                    </div>
+                  </div>
+                </GlowCard>
+              </Item>
+            </Stagger>
+          </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <GlowCard className="relative overflow-hidden">
+              <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.08] [background-image:linear-gradient(rgba(0,245,255,0.10)_1px,transparent_1px),linear-gradient(90deg,rgba(0,245,255,0.10)_1px,transparent_1px)] [background-size:60px_60px]" />
               <div className="flex items-center justify-between">
-                <div className="text-sm text-white/70">Engagement Growth</div>
-                <div className="text-sm font-semibold text-white">
-                  <MetricCounter value={120} suffix="%" prefix="+" />
+                <div>
+                  <div className="text-xs font-medium tracking-[0.22em] text-white/45">
+                    CLOSED-LOOP GROWTH SYSTEM
+                  </div>
+                  <div className="mt-2 font-heading text-xl text-white">
+                    Content → Engagement → Leads → Revenue → Reinvestment
+                  </div>
                 </div>
               </div>
-              <div className="mt-5 h-24 rounded-xl border border-white/10 bg-[linear-gradient(90deg,rgba(0,245,255,0.16),rgba(0,163,255,0.10))]" />
-              <div className="mt-3 text-xs text-white/50">
-                30-day growth loop (mock)
-              </div>
-            </GlowCard>
-          </Item>
-          <Item>
-            <GlowCard>
-              <div className="flex items-center justify-between">
-                <div className="text-sm text-white/70">Leads Generated</div>
-                <div className="text-sm font-semibold text-white">
-                  <MetricCounter value={800} suffix="+" />
+
+              <div className="mt-8 flex items-center justify-center">
+                <div className="relative h-56 w-56">
+                  <div className="absolute inset-0 rounded-full border border-cyan-400/25 bg-[radial-gradient(circle_at_center,rgba(0,245,255,0.10),transparent_60%)]" />
+                  <div className="absolute inset-0 rounded-full border border-[#00A3FF]/20 loop-rotate" />
+                  <div className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#00F5FF] shadow-[0_0_16px_rgba(0,245,255,0.55)]" />
+
+                  <div className="absolute left-1/2 top-2 -translate-x-1/2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
+                    Content
+                  </div>
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
+                    Engagement
+                  </div>
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
+                    Leads
+                  </div>
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
+                    Revenue
+                  </div>
                 </div>
               </div>
-              <div className="mt-5 h-24 rounded-xl border border-white/10 bg-[linear-gradient(90deg,rgba(0,163,255,0.14),rgba(0,245,255,0.10))]" />
-              <div className="mt-3 text-xs text-white/50">
-                Funnel capture rate (mock)
-              </div>
             </GlowCard>
-          </Item>
-          <Item>
-            <GlowCard>
-              <div className="flex items-center justify-between">
-                <div className="text-sm text-white/70">Ad ROAS</div>
-                <div className="text-sm font-semibold text-white">
-                  <MetricCounter value={3.2} suffix="x" decimals={1} />
+
+            <GlowCard className="relative overflow-hidden">
+              <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(900px_circle_at_20%_20%,rgba(0,245,255,0.14),transparent_58%),radial-gradient(900px_circle_at_80%_72%,rgba(0,163,255,0.10),transparent_58%)]" />
+              <div className="text-xs font-medium tracking-[0.22em] text-white/45">
+                CONTROL ROOM NOTE
+              </div>
+              <div className="mt-2 font-heading text-xl text-white">
+                Growth is a pipeline. We instrument the constraints.
+              </div>
+              <p className="mt-3 text-sm leading-7 text-white/60">
+                We measure what drives revenue: CAC, LTV, ROAS, Pipeline Velocity.
+              </p>
+
+              <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                <div className="flex items-center justify-between">
+                  <div className="text-sm text-white/70">Signal → Optimize → Scale</div>
+                  <div className="flex items-center gap-2 text-xs text-white/60">
+                    <span className="status-dot h-2 w-2 rounded-full bg-[#00F5FF]" />
+                    Live
+                  </div>
+                </div>
+                <div className="mt-4 h-px w-full bg-white/10" />
+                <div className="mt-4 grid gap-3 text-sm text-white/60">
+                  <div className="flex items-center justify-between">
+                    <span>CAC delta</span>
+                    <span className="text-white">
+                      <MetricCounter value={18} prefix="-" suffix="%" />
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>Pipeline velocity</span>
+                    <span className="text-white">
+                      <MetricCounter value={2.1} suffix="x" decimals={1} />
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>Creative cycle count</span>
+                    <span className="text-white">
+                      <MetricCounter value={12} suffix="/mo" />
+                    </span>
+                  </div>
                 </div>
               </div>
-              <div className="mt-5 flex items-end gap-2 rounded-xl border border-white/10 bg-white/[0.03] p-4">
-                <div className="h-7 w-3 rounded bg-[#00F5FF]/35" />
-                <div className="h-10 w-3 rounded bg-[#00F5FF]/45" />
-                <div className="h-14 w-3 rounded bg-[#00F5FF]/60" />
-                <div className="h-12 w-3 rounded bg-[#00A3FF]/55" />
-                <div className="h-16 w-3 rounded bg-[#00F5FF]/70" />
-                <div className="ml-auto text-xs text-white/50">Creative cycles</div>
-              </div>
-              <div className="mt-3 text-xs text-white/50">
-                Efficiency index (mock)
-              </div>
             </GlowCard>
-          </Item>
-        </Stagger>
+          </div>
+        </div>
       </section>
 
       <section className="py-16 md:py-24">
