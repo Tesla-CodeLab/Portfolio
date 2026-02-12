@@ -1,0 +1,61 @@
+"use client";
+
+import { useMemo, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Points, PointMaterial } from "@react-three/drei";
+import * as THREE from "three";
+
+function Particles({ count = 900 }: { count?: number }) {
+  const ref = useRef<THREE.Points>(null);
+
+  const positions = useMemo(() => {
+    const arr = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      const i3 = i * 3;
+      arr[i3] = (Math.random() - 0.5) * 18;
+      arr[i3 + 1] = (Math.random() - 0.5) * 12;
+      arr[i3 + 2] = (Math.random() - 0.5) * 12;
+    }
+    return arr;
+  }, [count]);
+
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime();
+    if (ref.current) {
+      ref.current.rotation.y = t * 0.03;
+      ref.current.rotation.x = Math.sin(t * 0.15) * 0.03;
+    }
+  });
+
+  return (
+    <group>
+      <Points ref={ref} positions={positions} stride={3} frustumCulled>
+        <PointMaterial
+          transparent
+          color="#00F5FF"
+          size={0.035}
+          sizeAttenuation
+          depthWrite={false}
+          opacity={0.42}
+        />
+      </Points>
+    </group>
+  );
+}
+
+export function ElectricParticles() {
+  return (
+    <div className="pointer-events-none fixed inset-0 -z-20">
+      <Canvas
+        dpr={[1, 1.5]}
+        camera={{ position: [0, 0, 8], fov: 55 }}
+        gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
+      >
+        <ambientLight intensity={0.6} />
+        <Particles />
+      </Canvas>
+
+      <div className="absolute inset-0 bg-[radial-gradient(900px_circle_at_18%_16%,rgba(0,245,255,0.06),transparent_62%),radial-gradient(900px_circle_at_82%_22%,rgba(0,163,255,0.05),transparent_66%)]" />
+    </div>
+  );
+}
