@@ -5,6 +5,11 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
 import * as THREE from "three";
 
+function prng(i: number) {
+  const x = Math.sin(i * 127.1) * 43758.5453123;
+  return x - Math.floor(x);
+}
+
 function Particles({ count = 900 }: { count?: number }) {
   const ref = useRef<THREE.Points>(null);
 
@@ -12,9 +17,9 @@ function Particles({ count = 900 }: { count?: number }) {
     const arr = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
-      arr[i3] = (Math.random() - 0.5) * 18;
-      arr[i3 + 1] = (Math.random() - 0.5) * 12;
-      arr[i3 + 2] = (Math.random() - 0.5) * 12;
+      arr[i3] = (prng(i + 1) - 0.5) * 18;
+      arr[i3 + 1] = (prng(i + 2) - 0.5) * 12;
+      arr[i3 + 2] = (prng(i + 3) - 0.5) * 12;
     }
     return arr;
   }, [count]);

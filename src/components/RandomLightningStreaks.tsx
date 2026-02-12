@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 function rand(min: number, max: number) {
   return Math.random() * (max - min) + min;
@@ -10,10 +10,9 @@ export function RandomLightningStreaks() {
   const [pulse, setPulse] = useState<null | {
     id: number;
     topPct: number;
+    topPctSecondary: number;
     rotateDeg: number;
   }>(null);
-
-  const seed = useMemo(() => Math.random(), []);
 
   useEffect(() => {
     let active = true;
@@ -25,9 +24,12 @@ export function RandomLightningStreaks() {
         if (!active) return;
 
         const id = Date.now();
+        const topPct = rand(18, 82);
+        const topPctSecondary = Math.min(92, topPct + rand(-6, 6));
         setPulse({
           id,
-          topPct: rand(18, 82),
+          topPct,
+          topPctSecondary,
           rotateDeg: rand(-10, 10),
         });
 
@@ -45,7 +47,7 @@ export function RandomLightningStreaks() {
       active = false;
       if (timeoutId) window.clearTimeout(timeoutId);
     };
-  }, [seed]);
+  }, []);
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -63,7 +65,7 @@ export function RandomLightningStreaks() {
             key={`${pulse.id}-b`}
             className="lightning-streak lightning-streak--secondary"
             style={{
-              top: `${Math.min(92, pulse.topPct + rand(-6, 6))}%`,
+              top: `${pulse.topPctSecondary}%`,
               transform: `rotate(${pulse.rotateDeg * 0.8}deg)`,
             }}
           />
