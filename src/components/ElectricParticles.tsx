@@ -41,7 +41,7 @@ function Particles({ count = 900 }: { count?: number }) {
           size={0.035}
           sizeAttenuation
           depthWrite={false}
-          opacity={0.42}
+          opacity={0.22}
         />
       </Points>
     </group>
@@ -59,8 +59,6 @@ export function ElectricParticles() {
         <ambientLight intensity={0.6} />
         <Particles />
       </Canvas>
-
-      <div className="absolute inset-0 bg-[radial-gradient(900px_circle_at_18%_16%,rgba(0,245,255,0.06),transparent_62%),radial-gradient(900px_circle_at_82%_22%,rgba(0,163,255,0.05),transparent_66%)]" />
     </div>
   );
 }

@@ -234,3 +234,124 @@ body {
 .loop-rotate {
   animation: loop-rotate 18s linear infinite;
 }
+
+@keyframes flywheel-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.flywheel-rotate {
+  animation: flywheel-rotate 20s linear infinite;
+}
+
+.flywheel-orbit {
+  transform-origin: center;
+  animation: flywheel-rotate 20s linear infinite;
+}
+
+.flywheel-ring {
+  transform-origin: center;
+  animation: flywheel-rotate 20s linear infinite;
+}
+
+.flywheel-core-pulse {
+  box-shadow: 0 0 0 rgba(0, 245, 255, 0);
+  animation: glow-pulse 4.6s ease-in-out infinite;
+  opacity: 0.75;
+}
+
+.flywheel-center {
+  box-shadow: 0 0 28px rgba(0, 245, 255, 0.18);
+}
+
+.flywheel-node:hover {
+  border-color: rgba(0, 245, 255, 0.35);
+  box-shadow: 0 0 24px rgba(0, 245, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.flywheel-line {
+  stroke: rgba(0, 245, 255, 0.55);
+  stroke-width: 0.75;
+  stroke-linecap: round;
+  stroke-dasharray: 3 3;
+  animation: flywheel-line-flow 2.8s linear infinite;
+}
+
+.flywheel-spin {
+  transform-origin: center;
+  animation: flywheel-rotate 20s linear infinite;
+}
+
+.flywheel-spin-inverse {
+  transform-origin: center;
+  animation: flywheel-rotate 20s linear infinite reverse;
+}
+
+@keyframes flywheel-line-flow {
+  0% {
+    stroke-dashoffset: 10;
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.75;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.45;
+  }
+}
+
+.command-center {
+  background: linear-gradient(
+    180deg,
+    rgba(4, 10, 20, 0.55),
+    rgba(14, 22, 40, 0.55)
+  );
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 245, 255, 0.07),
+    0 0 0 1px rgba(0, 245, 255, 0.05);
+}
+
+@keyframes metric-bar-fill {
+  0% {
+    width: 0%;
+    opacity: 0.55;
+  }
+  100% {
+    width: var(--bar);
+    opacity: 1;
+  }
+}
+
+.metric-bar-fill {
+  width: 0%;
+  opacity: 0;
+}
+
+.metric-bar-fill--run {
+  animation: metric-bar-fill 0.9s ease-out both;
+}
+
+.live-pulse-dot {
+  animation: status-blink 3s ease-in-out infinite;
+}
+
+@keyframes feed-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.feed-scroll {
+  display: inline-block;
+  padding-right: 40px;
+  animation: feed-scroll 18s linear infinite;
+}

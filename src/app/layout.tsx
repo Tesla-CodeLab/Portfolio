@@ -40,7 +40,7 @@ export default function RootLayout({
       >
         <ElectricParticles />
         <div className="pointer-events-none fixed inset-0 -z-10">
-          <div className="absolute inset-0 bg-[radial-gradient(1100px_circle_at_12%_8%,rgba(0,245,255,0.16),transparent_58%),radial-gradient(900px_circle_at_85%_18%,rgba(0,163,255,0.10),transparent_58%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(1400px_circle_at_38%_14%,rgba(0,245,255,0.16),transparent_62%),radial-gradient(1600px_circle_at_62%_22%,rgba(0,245,255,0.12),transparent_68%),radial-gradient(1400px_circle_at_62%_26%,rgba(0,163,255,0.05),transparent_74%)]" />
           <div className="absolute inset-0 opacity-[0.07] [background-image:linear-gradient(to_right,rgba(0,245,255,0.10)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,245,255,0.10)_1px,transparent_1px)] [background-size:72px_72px]" />
           <LightningMediaOverlay />
           <RandomLightningStreaks />

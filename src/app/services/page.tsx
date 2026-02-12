@@ -55,7 +55,7 @@ export default function ServicesPage() {
       <SectionHeading
         eyebrow="SERVICES"
         title="Growth systems designed for scale."
-        description="Pick a system—or integrate all four into a single performance stack."
+        description="Pick a system - or integrate all four into a single performance stack."
         right={
           <Link
             href="/contact"
